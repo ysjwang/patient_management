@@ -23,5 +23,26 @@
 require 'spec_helper'
 
 describe Patient do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it 'is valid with a first name, last name, and description' do
+      patient = build(:patient, first_name: 'John', last_name: 'Smith', description: 'Hello!')
+      expect(patient).to be_valid
+    end
+
+    it 'is not valid wihout a first name' do
+      patient = build(:patient, first_name: nil)
+      expect(patient).to have_at_least(1).errors_on(:first_name)
+    end
+
+    it 'is not valid without a last name' do
+      patient = build(:patient, last_name: nil)
+      expect(patient).to have_at_least(1).errors_on(:last_name)
+    end
+
+    it 'is not valid without a description' do
+      patient = build(:patient, description: nil)
+      expect(patient).to have_at_least(1).errors_on(:description)
+    end
+    
+  end
 end
