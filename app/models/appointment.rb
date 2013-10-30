@@ -28,4 +28,17 @@ class Appointment < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  belongs_to :doctor
+  belongs_to :patient
+
+  has_one :previous_appointment, class_name: 'Appointment'
+  belongs_to :appointment, foreign_key: 'previous_appointment_id'
+
+
+  has_one :next_appointment, class_name: 'Appointment'
+  belongs_to :appointment, foreign_key: 'next_appointment_id'
+
+
+
 end
