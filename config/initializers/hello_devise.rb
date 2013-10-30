@@ -1,0 +1,1 @@
+# PatientManagement::Application.config.secret_key = 'a58aea64e079c6f35d33f5ffc90aff004720ac8effd7a0a3e2c31ba7e9fdc8f3884269b309d96a2b1852fbd501f0e526c21974987fa44b5571bc40907875b268'
