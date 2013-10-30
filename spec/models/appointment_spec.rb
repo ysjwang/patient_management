@@ -31,8 +31,8 @@ describe Appointment do
       doctor = FactoryGirl.create(:doctor)
       patient = FactoryGirl.create(:patient)
 
-      previous_appointment = FactoryGirl.build(:past_appointment)
-      next_appointment = FactoryGirl.build(:future_appointment)
+      previous_appointment = FactoryGirl.create(:past_appointment)
+      next_appointment = FactoryGirl.create(:future_appointment)
 
       # Note we had to add 'my_' to each definition above.
 
