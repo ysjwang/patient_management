@@ -32,6 +32,7 @@ module PatientManagement
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+
     
   end
 end
