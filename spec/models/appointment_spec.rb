@@ -96,7 +96,7 @@ describe Appointment do
 
     before :each do
       @appointment = create(:ongoing_appointment)
-      @patient = appointment.patient
+      @patient = @appointment.patient
       @past_appointment = create(:past_appointment, patient: @patient)
       @future_appointment = create(:future_appointment, patient: @patient)
     end
@@ -124,7 +124,7 @@ describe Appointment do
       expect(@appointment.next_appointment).to_not eq @past_appointment
     end
 
-    it 'changes previous appointment\s next-appointment to this one when linking' do
+    it 'changes previous appointment\'s next-appointment to this one when linking' do
       # When I add a previous appointment, I expect the referred-to appointment to update its next-appointment
       @appointment.set_previous_appointment!(@past_appointment)
       expect(@appointment.previous_appointment.next_appointment).to eq @appointment
