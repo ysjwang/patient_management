@@ -3,16 +3,6 @@
 # Table name: appointments
 #
 #  id                      :integer          not null, primary key
-#  email                   :string(255)      default(""), not null
-#  encrypted_password      :string(255)      default(""), not null
-#  reset_password_token    :string(255)
-#  reset_password_sent_at  :datetime
-#  remember_created_at     :datetime
-#  sign_in_count           :integer          default(0), not null
-#  current_sign_in_at      :datetime
-#  last_sign_in_at         :datetime
-#  current_sign_in_ip      :string(255)
-#  last_sign_in_ip         :string(255)
 #  start_time              :datetime
 #  end_time                :datetime
 #  doctor_id               :integer
@@ -169,6 +159,27 @@ describe Appointment do
       @appointment.set_previous_appointment!(@future_appointment)
       expect(@appointment.previous_appointment).to_not eq @future_appointment
     end
-
   end
+
+  describe 'works' do
+    it 'calculates the total billable amount' do
+      appointment = create(:ongoing_appointment)
+
+      worktype1 = create(:worktype, rate: 10)
+      work1 = create(:work, appointment: appointment, worktype: worktype1, quantity: 2)
+
+      worktype2 = create(:worktype, rate: 20)
+      work2 = create(:work, appointment: appointment, worktype: worktype2, quantity: 4)
+
+      worktype3 = create(:worktype, rate: 30)
+      work3 = create(:work, appointment: appointment, worktype: worktype3, quantity: 6, billable: false)
+
+      correct_billable_amount = 20 + 80
+
+      expect(appointment.total_billable_amount.to_s).to eq '100.0'
+
+
+    end
+  end
+
 end
