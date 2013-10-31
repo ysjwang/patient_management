@@ -44,7 +44,7 @@ group :doc do
 end
 
 gem 'factory_girl_rails', '~> 4.2.1'
-gem 'faker', '~> 1.1.2'
+gem 'faker', '~> 1.2.0'
 
 group :development do
   gem 'annotate'

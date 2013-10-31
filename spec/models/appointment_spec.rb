@@ -165,18 +165,18 @@ describe Appointment do
     it 'calculates the total billable amount' do
       appointment = create(:ongoing_appointment)
 
-      worktype1 = create(:worktype)
-      work1 = create(:work, appointment: appointment, worktype: worktype1)
+      worktype1 = create(:worktype, rate: 10)
+      work1 = create(:work, appointment: appointment, worktype: worktype1, quantity: 2)
 
-      worktype2 = create(:worktype)
-      work2 = create(:work, appointment: appointment, worktype: worktype2)
+      worktype2 = create(:worktype, rate: 20)
+      work2 = create(:work, appointment: appointment, worktype: worktype2, quantity: 4)
 
-      worktype3 = create(:unbillable_worktype)
-      work3 = create(:work, appointment: appointment, worktype: worktype3)
+      worktype3 = create(:worktype, rate: 30)
+      work3 = create(:work, appointment: appointment, worktype: worktype3, quantity: 6, billable: false)
 
-      correct_billable_amount = work1.total_billable_amount + work2.total_billable_amount
+      correct_billable_amount = 20 + 80
 
-      expect(appointment.total_billable_amount).to eq correct_billable_amount
+      expect(appointment.total_billable_amount.to_s).to eq '100.0'
 
 
     end

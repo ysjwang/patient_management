@@ -27,9 +27,24 @@ class Appointment < ActiveRecord::Base
   has_one :previous_appointment, class_name: 'Appointment', foreign_key: 'previous_appointment_id'
   belongs_to :appointment, foreign_key: 'previous_appointment_id'
 
-
   has_one :next_appointment, class_name: 'Appointment', foreign_key: 'next_appointment_id'
   belongs_to :appointment, foreign_key: 'next_appointment_id'
+
+  has_many :works
+
+  def total_billable_amount
+    sum = 0
+
+    self.billable_works.each do |billable_work|
+      sum = sum + billable_work.billable_amount
+    end
+
+    return sum
+  end
+
+  def billable_works
+    return self.works.where(billable: true)
+  end
 
 
   def set_previous_appointment!(previous_appointment)

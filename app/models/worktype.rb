@@ -11,4 +11,8 @@
 #
 
 class Worktype < ActiveRecord::Base
+  validates :name, presence: true
+  validates :billing_unit, presence: true
+  validates :rate, presence: true
+  has_many :works
 end
