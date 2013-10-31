@@ -12,6 +12,17 @@ FactoryGirl.define do
       factory :past_appointment do
         start_time { Time.at(Time.now.to_f / 2) }
         end_time { Time.at(Time.now.to_f / 2 + 3600) } # Hour long appointment
+
+
+        factory :appointment_with_works do
+          after(:build) do |appointment|
+            rand(2..4).each do
+              appointment.works << build(:work)
+            end
+          end
+
+        end
+
       end
 
       factory :future_appointment do

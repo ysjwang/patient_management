@@ -21,8 +21,5 @@ describe Worktype do
 
   end
 
-  describe 'functionality' do
-    it 'calculates the total billable'
 
-  end
 end

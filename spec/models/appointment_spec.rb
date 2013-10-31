@@ -159,6 +159,27 @@ describe Appointment do
       @appointment.set_previous_appointment!(@future_appointment)
       expect(@appointment.previous_appointment).to_not eq @future_appointment
     end
-
   end
+
+  describe 'works' do
+    it 'calculates the total billable amount' do
+      appointment = create(:ongoing_appointment)
+
+      worktype1 = create(:worktype)
+      work1 = create(:work, appointment: appointment, worktype: worktype1)
+
+      worktype2 = create(:worktype)
+      work2 = create(:work, appointment: appointment, worktype: worktype2)
+
+      worktype3 = create(:unbillable_worktype)
+      work3 = create(:work, appointment: appointment, worktype: worktype3)
+
+      correct_billable_amount = work1.total_billable_amount + work2.total_billable_amount
+
+      expect(appointment.total_billable_amount).to eq correct_billable_amount
+
+
+    end
+  end
+
 end

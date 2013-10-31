@@ -14,15 +14,19 @@
 require 'spec_helper'
 
 describe Work do
-  pending "add some examples to (or delete) #{__FILE__}"
 
   describe 'validations' do
-    it 'is valid with a worktype, appointment, and quantity'
+    it 'is valid with a worktype, appointment, billable, and quantity'
     it 'is invalid without a worktype'
     it 'is invalid without an appointment'
     it 'is invalid without a quantity'
+    it 'is invalid without billable'
 
   end
 
+  describe 'billing' do
+    it 'outputs 0 billable if work is not billable'
+    it 'correctly calculates billable work'
+  end
 
 end
