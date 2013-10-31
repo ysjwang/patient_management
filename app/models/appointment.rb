@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: appointments
+#
+#  id                      :integer          not null, primary key
+#  start_time              :datetime
+#  end_time                :datetime
+#  doctor_id               :integer
+#  patient_id              :integer
+#  previous_appointment_id :integer
+#  next_appointment_id     :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#
+
 class Appointment < ActiveRecord::Base
 
   validates :doctor_id, presence: true

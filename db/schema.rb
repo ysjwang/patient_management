@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030224447) do
+ActiveRecord::Schema.define(version: 20131031014730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,5 +68,22 @@ ActiveRecord::Schema.define(version: 20131030224447) do
 
   add_index "patients", ["email"], name: "index_patients_on_email", unique: true, using: :btree
   add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true, using: :btree
+
+  create_table "works", force: true do |t|
+    t.decimal  "quantity",       precision: 8, scale: 2
+    t.integer  "worktype_id"
+    t.integer  "appointment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "billable"
+  end
+
+  create_table "worktypes", force: true do |t|
+    t.string   "name"
+    t.string   "billing_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "rate",         precision: 8, scale: 2
+  end
 
 end
