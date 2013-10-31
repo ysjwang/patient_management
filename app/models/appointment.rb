@@ -15,6 +15,11 @@
 
 class Appointment < ActiveRecord::Base
 
+
+  scope :past, lambda { where("end_time < ?", Time.now) }
+  scope :ongoing, lambda { where("start_time < ? AND end_time > ?", Time.now, Time.now) }
+  scope :future, lambda { where("start_time > ?", Time.now) }
+
   validates :doctor_id, presence: true
   validates :patient_id, presence: true
   validates :start_time, presence: true

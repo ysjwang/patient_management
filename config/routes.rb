@@ -1,4 +1,6 @@
 PatientManagement::Application.routes.draw do
+  get "dashboards/doctor"
+  get "dashboards/patient"
   devise_for :patients
   devise_for :doctors
   get "pages/home"
