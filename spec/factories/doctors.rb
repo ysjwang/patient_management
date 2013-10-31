@@ -10,5 +10,7 @@ FactoryGirl.define do
     password { 'password' }
     password_confirmation { 'password' }
     
+    # hello_user = create(:patient)
+
   end
 end

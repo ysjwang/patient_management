@@ -25,7 +25,7 @@ require 'spec_helper'
 describe Doctor do
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  context 'validations' do
+  describe 'validations' do
     it 'is valid with a first name, last name, and description' do
       doctor = build(:doctor, first_name: 'John', last_name: 'Smith', description: 'Hello!')
       expect(doctor).to be_valid

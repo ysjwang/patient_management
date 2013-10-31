@@ -23,7 +23,7 @@
 require 'spec_helper'
 
 describe Patient do
-  context 'validations' do
+  describe 'validations' do
     it 'is valid with a first name, last name, and description' do
       patient = build(:patient, first_name: 'John', last_name: 'Smith', description: 'Hello!')
       expect(patient).to be_valid

@@ -30,4 +30,7 @@ class Patient < ActiveRecord::Base
   validates :last_name, presence: true
   validates :description, presence: true
 
+  has_many :appointments
+  has_many :doctors, through: :appointments
+
 end
