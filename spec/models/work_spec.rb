@@ -20,7 +20,7 @@ describe Work do
       
       work = build(:work, 
         worktype: create(:worktype),
-        appointment: create(:ongoing_appointment),
+        appointment: create(:valid_ongoing_appointment),
         billable: true,
         quantity: 10)
 
@@ -51,7 +51,7 @@ describe Work do
 
   describe 'billing' do
     it 'outputs 0 billable if work is not billable' do
-      work = build(:unbillable_work)
+      work = build(:work, :unbillable)
       expect(work.billable_amount).to eq 0
     end
 

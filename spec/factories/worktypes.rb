@@ -16,7 +16,7 @@
 FactoryGirl.define do
   factory :worktype do
     name { Faker::Commerce.product_name } 
-    billing_unit { 'hourly' }
+    billing_unit { ['hourly', 'per count', 'one-time'].sample }
     rate { rand(1..100) }
   end
 end
