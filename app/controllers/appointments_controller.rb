@@ -8,15 +8,18 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
+
     respond_to do |format|
       if @appointment.update(appointment_params)
 
-        format.html { render json: @appointment }
-        format.js { render json: @appointment }
+        format.html { respond_with_bip(@appointment) }
+        format.js { respond_with_bip(@appointment) }
+        format.json { respond_with_bip(@appointment) }
 
       else
-        format.html { render json: @appointment }
-        format.js { render json: @appointment }
+        format.html { respond_with_bip(@appointment) }
+        format.js { respond_with_bip(@appointment) }
+        format.json { respond_with_bip(@appointment) }
       end
     end
   end

@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ysjwang/best_in_place.git
+  revision: aad967e72831276d9dfe960cf9737d40f3550a30
+  branch: staging
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,7 +40,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2-x86-mingw32)
-    bootstrap-sass (3.0.0.0.rc2)
+    bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
@@ -68,7 +77,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
-    ffi (1.9.0-x86-mingw32)
+    ffi (1.9.3)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -77,6 +86,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.0)
+      railties (>= 3.1.0)
     json (1.8.1)
     launchy (2.3.0)
       addressable (~> 2.3)
@@ -84,7 +95,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
-    mini_portile (0.5.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
     nokogiri (1.6.0-x86-mingw32)
@@ -113,7 +124,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rspec-core (2.14.6)
+    rspec-core (2.14.7)
     rspec-expectations (2.14.3)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
@@ -147,9 +158,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    thin (1.5.1)
+    thin (1.6.1)
       daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
+      eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     thor (0.18.1)
     thread_safe (0.1.3)
@@ -175,6 +186,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  best_in_place!
   bootstrap-sass (~> 3.0.0.0.rc)
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.0)
@@ -184,6 +196,7 @@ DEPENDENCIES
   faker (~> 1.2.0)
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-ui-rails
   launchy (~> 2.3.0)
   pg
   quiet_assets

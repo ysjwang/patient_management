@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-md-12">
-    <h1>Appointment Details</h1>
+    <h1>Appointment Overview</h1>
 
     <hr />
 
@@ -50,8 +50,13 @@
 
     <!-- Appointment-specific Information !-->
     <div class="well" id="appointment-detail">
-      <h2>Work Done</h2>
+      <h2>Appointment Details</h2>
 
+      <br />
+      <%= best_in_place @appointment, :notes, type: :textarea, inner_class: 'form-control', cancel_button: 'Reset', cancel_button_class: 'btn btn-danger' %>
+
+
+      <hr />
 
       <table class="table">
         <thead>
@@ -63,10 +68,14 @@
         <tbody>
           <% @appointment.works.each do |work| %>
           <tr>
-            <td><%= work.worktype.name %></td>
-            <td><%= work.work_quantity_string %></td>
+            <td>
+
+              <%= best_in_place work, :worktype_id, type: :select, collection: Worktype.all.collect { |worktype| [worktype.id, worktype.name] } %>
+
+            </td>
+            <td><%= best_in_place work, :quantity, type: :input, inner_class: 'form-control input-sm', display_as: :work_quantity_string %></td>
             <td><% if work.billable? %><span class="glyphicon glyphicon-ok"></span><% end %></td>
-            <td><%= work.notes.to_s %></td>
+            <td><%= best_in_place work, :notes, type: :input, inner_class: 'form-control input-sm', ok_button: 'Save',  ok_button_class: 'btn btn-xs btn-primary', cancel_button: 'Cancel', cancel_button_class: 'btn btn-xs btn-default' %></td>
           </tr>
           <% end %>
         </tbody>
