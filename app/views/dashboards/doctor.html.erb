@@ -7,20 +7,20 @@
 
 
     <!-- Ongoing Appointments !-->
-    <div class="well" id="ongoing-transaction">
+    <div class="well" id="ongoing-appointments">
       <h2>Ongoing Appointments</h2>
       <%= render 'appointments/appointments_table_with_work', appointments: @ongoing_appointments %>
     </div>
 
     <!-- Upcoming Appointments !-->
-    <div class="well" id="future-transaction">
+    <div class="well" id="future-appointments">
       <h2>Upcoming Appointments</h2>
       <%= render 'appointments/appointments_table_with_work', appointments: @future_appointments %>
     </div>
 
 
     <!-- Past Appointments !-->
-    <div class="well" id="past-transaction">
+    <div class="well" id="past-appointments">
       <h2>Past Appointments</h2>
       <%= render 'appointments/appointments_table_with_work', appointments: @past_appointments %>
     </div>
