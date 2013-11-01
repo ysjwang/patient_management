@@ -9,6 +9,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  billable       :boolean
+#  notes          :text
 #
 
 require 'spec_helper'

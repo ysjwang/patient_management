@@ -23,6 +23,8 @@ FactoryGirl.define do
 
     billable { true }
 
+    notes { Faker::Company.catch_phrase }
+
    
     trait :with_ongoing_appointment do
       appointment { create(:ongoing_appointment) }

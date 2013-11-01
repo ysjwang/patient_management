@@ -37,6 +37,19 @@ class Appointment < ActiveRecord::Base
 
   has_many :works
 
+
+  def display_start_date
+    return start_time.strftime("%A, %-d %B, %Y")
+  end
+
+  def display_start_time
+    return start_time.strftime("%H:%M %p")
+  end
+
+  def display_end_time
+    return end_time.strftime("%H:%M %p")
+  end
+
   def total_billable_amount
     sum = 0
 

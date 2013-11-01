@@ -57,16 +57,26 @@
 
       <table class="table">
         <thead>
-          <th>When</th>
-          <th>Until</th>
+          <th>Date</th>
+          <th>Start</th>
+          <th>End</th>
           <th>Patient</th>
+          <th>Work Done</th>
         </thead>
 
         <% @past_appointments.each do |appointment| %>
         <tr>
-          <td><%= appointment.start_time %></td>
-          <td><%= appointment.end_time %></td>
+          <td><%= appointment.display_start_date %></td>
+          <td><%= appointment.display_start_time %></td>
+          <td><%= appointment.display_end_time %></td>
           <td><%= link_to appointment.patient.full_name, '#' %></td>
+          <td>
+            <ul>
+              <% appointment.works.each do |work| %>
+              <li><%= work.work_done_string %></li>
+              <% end %>
+            </ul>
+          </td>
         </tr>
         <% end %>
       </table>
