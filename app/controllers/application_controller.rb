@@ -8,8 +8,5 @@ class ApplicationController < ActionController::Base
     dashboards_doctor_path
   end
 
-  # For CanCan / X-Editable-Rails 
-  def current_ability
-    @current_ability ||= DoctorAbility.new(current_doctor)
-  end
+  
 end

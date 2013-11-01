@@ -21,8 +21,8 @@ gem 'bootstrap-sass', '~> 3.0.0.0.rc'
 gem 'sass-rails', '~> 4.0.0'
 
 # X-editable
-gem 'x-editable-rails'
-gem 'cancan'
+# gem 'x-editable-rails'
+# gem 'cancan'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
