@@ -52,6 +52,8 @@
     <div class="well" id="appointment-detail">
       <h2>Work Done</h2>
 
+      <%= editable @appointment, :notes, url: appointment_path, value: @appointment.notes, pk: @appointment.id %>
+
       <table class="table">
         <thead>
           <th>Type</th>

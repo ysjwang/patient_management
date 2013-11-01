@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require editable/bootstrap-editable
+//= require editable/rails
 //= require_tree .
