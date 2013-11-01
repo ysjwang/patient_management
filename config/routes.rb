@@ -1,6 +1,6 @@
 PatientManagement::Application.routes.draw do
   
-
+  resources :works
   resources :appointments
 
   get "dashboards/doctor"
