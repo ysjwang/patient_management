@@ -6,20 +6,21 @@
     <th>Patient</th>
     <th>Work</th>
   </thead>
-
-  <% appointments.each do |appointment| %>
-  <tr>
-    <td><%= appointment.display_start_date %></td>
-    <td><%= appointment.display_start_time %></td>
-    <td><%= appointment.display_end_time %></td>
-    <td><%= link_to appointment.patient.full_name, '#' %></td>
-    <td>
-      <ul>
-        <% appointment.works.each do |work| %>
-        <li><%= work.work_done_string %></li>
-        <% end %>
-      </ul>
-    </td>
-  </tr>
-  <% end %>
+  <tbody>
+    <% appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.display_start_date %></td>
+      <td><%= appointment.display_start_time %></td>
+      <td><%= appointment.display_end_time %></td>
+      <td><%= link_to appointment.patient.full_name, appointment %></td>
+      <td>
+        <ul>
+          <% appointment.works.each do |work| %>
+          <li><%= work.work_done_string %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>

@@ -43,5 +43,13 @@ class Work < ActiveRecord::Base
     return pluralize(self.quantity, self.worktype.billing_unit) + ' of ' + self.worktype.name
   end
 
+  def work_quantity_string
+    return pluralize(self.quantity, self.worktype.billing_unit)
+  end
+
+  def billable?
+    return self.billable
+  end
+
 
 end

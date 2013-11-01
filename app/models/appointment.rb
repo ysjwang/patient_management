@@ -11,6 +11,7 @@
 #  next_appointment_id     :integer
 #  created_at              :datetime
 #  updated_at              :datetime
+#  notes                   :text
 #
 
 class Appointment < ActiveRecord::Base
@@ -39,7 +40,7 @@ class Appointment < ActiveRecord::Base
 
 
   def display_start_date
-    return start_time.strftime("%A, %-d %B, %Y")
+    return start_time.strftime("%A %-d %B, %Y")
   end
 
   def display_start_time

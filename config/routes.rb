@@ -1,4 +1,8 @@
 PatientManagement::Application.routes.draw do
+  
+
+  resources :appointments
+
   get "dashboards/doctor"
   get "dashboards/patient"
   devise_for :patients

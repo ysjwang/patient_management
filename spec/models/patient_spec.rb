@@ -18,6 +18,8 @@
 #  description            :text
 #  created_at             :datetime
 #  updated_at             :datetime
+#  gender                 :string(255)
+#  birthday               :datetime
 #
 
 require 'spec_helper'

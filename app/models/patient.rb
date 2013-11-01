@@ -18,6 +18,8 @@
 #  description            :text
 #  created_at             :datetime
 #  updated_at             :datetime
+#  gender                 :string(255)
+#  birthday               :datetime
 #
 
 class Patient < ActiveRecord::Base
@@ -39,6 +41,11 @@ class Patient < ActiveRecord::Base
 
   def reverse_full_name
     return self.last_name + ' ' + self.first_name
+  end
+
+  def age
+    now = Time.now.utc.to_date
+    now.year - self.birthday.year - (self.birthday.to_date.change(:year => now.year) > now ? 1 : 0)
   end
 
 end
