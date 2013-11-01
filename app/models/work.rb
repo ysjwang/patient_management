@@ -9,7 +9,10 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  billable       :boolean
+#  notes          :text
 #
+
+include ActionView::Helpers::TextHelper # for pluralize in work_done_string()
 
 class Work < ActiveRecord::Base
   validates :worktype_id, presence: true
@@ -35,4 +38,10 @@ class Work < ActiveRecord::Base
       return 0
     end
   end
+
+  def work_done_string
+    return pluralize(self.quantity, self.worktype.billing_unit) + ' of ' + self.worktype.name
+  end
+
+
 end

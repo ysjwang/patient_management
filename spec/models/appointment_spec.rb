@@ -21,8 +21,8 @@ describe Appointment do
       doctor = FactoryGirl.create(:doctor)
       patient = FactoryGirl.create(:patient)
 
-      previous_appointment = FactoryGirl.create(:past_appointment)
-      next_appointment = FactoryGirl.create(:future_appointment)
+      previous_appointment = FactoryGirl.create(:valid_past_appointment)
+      next_appointment = FactoryGirl.create(:valid_future_appointment)
 
       # Note we had to add 'my_' to each definition above.
 
@@ -41,22 +41,22 @@ describe Appointment do
 
 
     it 'is invalid without a start_time' do
-      appointment = build(:ongoing_appointment, start_time: nil)
+      appointment = build(:valid_ongoing_appointment, start_time: nil)
       expect(appointment).to have_at_least(1).errors_on(:start_time)
     end
 
     it 'is invalid without an end_time' do
-      appointment = build(:ongoing_appointment, end_time: nil)
+      appointment = build(:valid_ongoing_appointment, end_time: nil)
       expect(appointment).to have_at_least(1).errors_on(:end_time)
     end
 
     it 'is invalid without a doctor' do
-      appointment = build(:ongoing_appointment, doctor: nil)
+      appointment = build(:valid_ongoing_appointment, doctor: nil)
       expect(appointment).to have_at_least(1).errors_on(:doctor_id)
     end
 
     it 'is invalid without a patient' do
-      appointment = build(:ongoing_appointment, patient: nil)
+      appointment = build(:valid_ongoing_appointment, patient: nil)
       expect(appointment).to have_at_least(1).errors_on(:patient_id)
     end
 
@@ -68,7 +68,7 @@ describe Appointment do
     before :each do
       @doctor = create(:doctor)
       @patient = create(:patient)
-      appointment = create(:ongoing_appointment, doctor: @doctor, patient: @patient)
+      appointment = create(:valid_ongoing_appointment, doctor: @doctor, patient: @patient)
     end
 
     it 'connects a doctor to its patients' do
@@ -85,10 +85,10 @@ describe Appointment do
   describe 'add previous/next appointments' do
 
     before :each do
-      @appointment = create(:ongoing_appointment)
+      @appointment = create(:valid_ongoing_appointment)
       @patient = @appointment.patient
-      @past_appointment = create(:past_appointment, patient: @patient)
-      @future_appointment = create(:future_appointment, patient: @patient)
+      @past_appointment = create(:valid_past_appointment, patient: @patient)
+      @future_appointment = create(:valid_future_appointment, patient: @patient)
     end
 
     it 'is successful if previous appointment starts before this one' do
@@ -163,7 +163,7 @@ describe Appointment do
 
   describe 'works' do
     it 'calculates the total billable amount' do
-      appointment = create(:ongoing_appointment)
+      appointment = create(:valid_ongoing_appointment)
 
       worktype1 = create(:worktype, rate: 10)
       work1 = create(:work, appointment: appointment, worktype: worktype1, quantity: 2)
@@ -172,7 +172,7 @@ describe Appointment do
       work2 = create(:work, appointment: appointment, worktype: worktype2, quantity: 4)
 
       worktype3 = create(:worktype, rate: 30)
-      work3 = create(:work, appointment: appointment, worktype: worktype3, quantity: 6, billable: false)
+      work3 = create(:work, :unbillable, appointment: appointment, worktype: worktype3, quantity: 6)
 
       correct_billable_amount = 20 + 80
 

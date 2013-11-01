@@ -20,11 +20,25 @@ FactoryGirl.define do
     quantity { rand() * 10 }
 
     worktype { create(:worktype) }
-    appointment { create(:ongoing_appointment) }
 
     billable { true }
 
-    factory :unbillable_work do
+    notes { Faker::Company.catch_phrase }
+
+   
+    trait :with_ongoing_appointment do
+      appointment { create(:ongoing_appointment) }
+    end
+
+    trait :with_past_appointment do
+      appointment { create(:past_appointment) }
+    end
+
+    trait :with_future_appointment do
+      appointment { create(:future_appointment) }
+    end
+
+    trait :unbillable do
       billable { false }
     end
 

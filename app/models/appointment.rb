@@ -15,6 +15,11 @@
 
 class Appointment < ActiveRecord::Base
 
+
+  scope :past, lambda { where("end_time < ?", Time.now).order('start_time DESC') }
+  scope :ongoing, lambda { where("start_time < ? AND end_time > ?", Time.now, Time.now).order('start_time DESC') }
+  scope :future, lambda { where("start_time > ?", Time.now).order('start_time ASC') }
+
   validates :doctor_id, presence: true
   validates :patient_id, presence: true
   validates :start_time, presence: true
@@ -31,6 +36,19 @@ class Appointment < ActiveRecord::Base
   belongs_to :appointment, foreign_key: 'next_appointment_id'
 
   has_many :works
+
+
+  def display_start_date
+    return start_time.strftime("%A, %-d %B, %Y")
+  end
+
+  def display_start_time
+    return start_time.strftime("%H:%M %p")
+  end
+
+  def display_end_time
+    return end_time.strftime("%H:%M %p")
+  end
 
   def total_billable_amount
     sum = 0
