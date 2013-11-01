@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require turbolinks
 //= require bootstrap
+//= require best_in_place
 //= require_tree .

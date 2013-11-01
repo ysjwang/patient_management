@@ -25,7 +25,8 @@ gem 'sass-rails', '~> 4.0.0'
 # gem 'cancan'
 
 # Best in Place Gem
-gem 'best_in_place'
+gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'jquery-ui-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
