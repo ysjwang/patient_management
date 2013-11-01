@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <th>Date</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Patient</th>
+  </thead>
+
+  <% appointments.each do |appointment| %>
+  <tr>
+    <td><%= appointment.display_start_date %></td>
+    <td><%= appointment.display_start_time %></td>
+    <td><%= appointment.display_end_time %></td>
+    <td><%= link_to appointment.patient.full_name, '#' %></td>
+  </tr>
+  <% end %>
+</table>

@@ -9,78 +9,20 @@
     <!-- Ongoing Appointments !-->
     <div class="well" id="ongoing-transaction">
       <h2>Ongoing Appointments</h2>
-
-      <table class="table">
-        <thead>
-          <th>When</th>
-          <th>Until</th>
-          <th>Patient</th>
-        </thead>
-
-        <% @ongoing_appointments.each do |appointment| %>
-        <tr>
-          <td><%= appointment.start_time %></td>
-          <td><%= appointment.end_time %></td>
-          <td><%= link_to appointment.patient.full_name, '#' %></td>
-        </tr>
-        <% end %>
-      </table>
-
+      <%= render 'appointments/appointments_table_with_work', appointments: @ongoing_appointments %>
     </div>
 
     <!-- Upcoming Appointments !-->
     <div class="well" id="future-transaction">
       <h2>Upcoming Appointments</h2>
-
-      <table class="table">
-        <thead>
-          <th>When</th>
-          <th>Until</th>
-          <th>Patient</th>
-        </thead>
-
-        <% @future_appointments.each do |appointment| %>
-        <tr>
-          <td><%= appointment.start_time %></td>
-          <td><%= appointment.end_time %></td>
-          <td><%= link_to appointment.patient.full_name, '#' %></td>
-        </tr>
-        <% end %>
-      </table>
-
+      <%= render 'appointments/appointments_table_with_work', appointments: @future_appointments %>
     </div>
 
 
     <!-- Past Appointments !-->
     <div class="well" id="past-transaction">
       <h2>Past Appointments</h2>
-
-      <table class="table">
-        <thead>
-          <th>Date</th>
-          <th>Start</th>
-          <th>End</th>
-          <th>Patient</th>
-          <th>Work Done</th>
-        </thead>
-
-        <% @past_appointments.each do |appointment| %>
-        <tr>
-          <td><%= appointment.display_start_date %></td>
-          <td><%= appointment.display_start_time %></td>
-          <td><%= appointment.display_end_time %></td>
-          <td><%= link_to appointment.patient.full_name, '#' %></td>
-          <td>
-            <ul>
-              <% appointment.works.each do |work| %>
-              <li><%= work.work_done_string %></li>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-        <% end %>
-      </table>
-
+      <%= render 'appointments/appointments_table_with_work', appointments: @past_appointments %>
     </div>
 
 
