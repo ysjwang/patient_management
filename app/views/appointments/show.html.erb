@@ -6,13 +6,73 @@
     <hr />
 
 
-    <!-- Ongoing Appointments !-->
-    <div class="well" id="ongoing-transaction">
-      <h2><%= @appointment.patient.full_name %>, on <%= @appointment.display_start_date %> <%= @appointment.display_start_time %></h2>
-      <p>This is some text. taht is all.</p>
+    <!-- Basic Patient Information !-->
+    <div class="well" id="patient-overview">
+
+      <div class="row">
+        <div class="col-md-2">
+          <center><img src="http://placehold.it/150x150" class="img-rounded img-responsive"></center>
+        </div>
+        <div class="col-md-10">
+          <h2><%= @patient.full_name %></h2>
+          <h3><%= @appointment.display_start_date %> at <%= @appointment.display_start_time %></h3>
+          <br />
+
+          <div class="row">
+            <div class="col-md-3">
+              <ul class="list-unstyled">
+                <li><strong>Age:</strong> <%= @patient.age %></li>
+                <li><strong>Gender:</strong> <%= @patient.gender %></li>
+                <li><strong>Blood Type:</strong> AB</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <ul class="list-unstyled">
+                <li><strong>Age:</strong> <%= @patient.age %></li>
+                <li><strong>Gender:</strong> <%= @patient.gender %></li>
+                <li><strong>Blood Type:</strong> AB</li>
+              </ul>
+            </div>
+          </div>
+
+          <hr />
+          <div id="patient-medical-history">
+            <h4>Medical History</h4>
+            <p><%= simple_format(@patient.description) %></p>
+
+          </div>
+
+
+        </div>
+      </div>
+
     </div>
 
-     
+    <!-- Appointment-specific Information !-->
+    <div class="well" id="appointment-detail">
+      <h2>Work Done</h2>
+
+      <table class="table">
+        <thead>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Billable?</th>
+          <th>Notes</th>
+        </thead>
+        <tbody>
+          <% @appointment.works.each do |work| %>
+          <tr>
+            <td><%= work.worktype.name %></td>
+            <td><%= work.work_quantity_string %></td>
+            <td><% if work.billable? %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+            <td><%= work.notes.to_s %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <button type="button" class="btn btn-primary">Generate Invoice</button>
+    </div>
 
 
   </div>

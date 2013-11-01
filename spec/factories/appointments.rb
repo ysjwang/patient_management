@@ -6,6 +6,8 @@ FactoryGirl.define do
     # You can do cool stuff in your code like
     # FactoryGirl.create(:appointment, :with_doctor, :past_appointment, patient_id: 12)
 
+    notes { Faker::Lorem.paragraph }
+
     trait :with_doctor do
       doctor { create(:doctor) }
     end

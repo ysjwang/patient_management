@@ -7,6 +7,9 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     email { Faker::Internet.email }
 
+    birthday { Time.at(Time.now.to_f / 2 + 60*60*24*365*rand(1..20)) }
+    gender { ['M', 'F'].sample }
+
     password { 'password' }
     password_confirmation { 'password' }
     
