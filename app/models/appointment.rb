@@ -39,6 +39,8 @@ class Appointment < ActiveRecord::Base
   has_many :works
 
 
+  
+
   def display_start_date
     return start_time.strftime("%A %-d %B, %Y")
   end

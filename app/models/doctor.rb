@@ -44,4 +44,6 @@ class Doctor < ActiveRecord::Base
   def doctor_name
     return 'Dr. ' + self.last_name
   end
+
+  
 end
