@@ -1,0 +1,40 @@
+<!-- Basic Patient Information !-->
+<div class="well" id="patient-overview">
+
+  <div class="row">
+    <div class="col-md-2">
+      <center><img src="http://placehold.it/150x150" class="img-rounded img-responsive"></center>
+    </div>
+    <div class="col-md-10">
+      <h2><%= patient.full_name %></h2>
+      <br />
+
+      <div class="row">
+        <div class="col-md-3">
+          <ul class="list-unstyled">
+            <li><strong>Age:</strong> <%= patient.age %></li>
+            <li><strong>Gender:</strong> <%= patient.gender %></li>
+            <li><strong>Blood Type:</strong> AB</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="list-unstyled">
+            <li><strong>Age:</strong> <%= patient.age %></li>
+            <li><strong>Gender:</strong> <%= patient.gender %></li>
+            <li><strong>Blood Type:</strong> AB</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr />
+      <div id="patient-medical-history">
+        <h4>Medical History</h4>
+        <p><%= simple_format(patient.description) %></p>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
