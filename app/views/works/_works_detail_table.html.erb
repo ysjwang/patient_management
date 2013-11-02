@@ -1,0 +1,78 @@
+<%= form_for(new_work, remote: true, url: create_from_works_detail_table_work_path, html: { class: "table-new-work-form" }) do |f| %>
+
+<table class="table">
+  <thead>
+    <th>Type</th>
+    <th>Quantity</th>
+    <th>Billable?</th>
+    <th>Notes</th>
+    <th></th> <!-- Action !-->
+  </thead>
+  <tbody>
+    <% works.each do |work| %>
+    <tr>
+      <td>
+        <!-- Work Type !-->
+        <%= best_in_place work, :worktype_id, type: :select, collection: Worktype.all.collect { |worktype| [worktype.id, worktype.name] } %>
+      </td>
+      <td>
+        <!-- Quantity !-->
+        <%= best_in_place work, :quantity, type: :input, inner_class: 'form-control input-sm', display_as: :work_quantity_string %>
+      </td>
+      <td>
+        <!-- Billable !-->
+        <%= best_in_place work, :billable, type: :checkbox, collection: ["<span class=\"glyphicon glyphicon-remove\"></span>".html_safe, "<span class=\"glyphicon glyphicon-ok\"></span>".html_safe] %>
+      </td>
+      <td>
+        <!-- Notes !-->
+        <%= best_in_place work, :notes, type: :input, inner_class: 'form-control input-sm', ok_button: 'Save',  ok_button_class: 'btn btn-xs btn-primary', cancel_button: 'Cancel', cancel_button_class: 'btn btn-xs btn-default' %>
+      </td>
+
+      <td>
+        <!-- Action !-->
+        <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></button>
+      </td>
+    </tr>
+    <% end %>
+
+    <% if !new_work.blank? %>
+
+    <!-- New Work Row !-->
+    <div id="table-new-work-row">
+
+      <tr>
+        <td>
+          <!-- Work Type !-->
+          <%= f.select :worktype_id, options_from_collection_for_select(Worktype.all, 'id', 'name'), {prompt: 'Choose a Work Type Below:'}, { class: 'form-control' } %>
+        </td>
+
+        <td>
+          <!-- Quantity !-->
+          <%= f.text_field :quantity, as: :text, class: 'form-control', placeholder: 'Numeric only' %>
+
+        </td>
+
+        <td>
+          <!-- Billable !-->
+          <%= f.select :billable, options_for_select([['Billable', true], ['Unbillable', false]]), {prompt: 'Select Billing:'}, { class: 'form-control' } %>
+        </td>
+
+        <td>
+          <!-- Notes !-->
+          <%= f.text_field :notes, as: :textarea, class: 'form-control', placeholder: 'Optional' %>
+        </td>
+
+        <td>
+          <!-- Action <i class=\"glyphicon glyphicon-plus\"></i>".html_safe !-->
+          <%= f.submit "Add", class: 'btn btn-success' %>
+        </td>
+
+
+      </tr>
+    </div>
+
+    <% end %>
+
+  </tbody>
+</table>
+<% end %>
