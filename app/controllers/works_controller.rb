@@ -55,7 +55,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:notes, :worktype_id, :quantity)
+    params.require(:work).permit(:notes, :worktype_id, :quantity, :billable)
   end
 
 end

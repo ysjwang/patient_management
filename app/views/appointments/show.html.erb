@@ -74,7 +74,11 @@
 
             </td>
             <td><%= best_in_place work, :quantity, type: :input, inner_class: 'form-control input-sm', display_as: :work_quantity_string %></td>
-            <td><% if work.billable? %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+            <td>
+                
+              <%= best_in_place work, :billable, type: :checkbox, collection: ["<span class=\"glyphicon glyphicon-remove\"></span>".html_safe, "<span class=\"glyphicon glyphicon-ok\"></span>".html_safe] %>
+
+            </td>
             <td><%= best_in_place work, :notes, type: :input, inner_class: 'form-control input-sm', ok_button: 'Save',  ok_button_class: 'btn btn-xs btn-primary', cancel_button: 'Cancel', cancel_button_class: 'btn btn-xs btn-default' %></td>
           </tr>
           <% end %>
