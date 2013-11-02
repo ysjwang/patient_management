@@ -30,13 +30,16 @@
 
       <td>
         <!-- Action !-->
-        <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-minus-sign"></i></button>
+        <%= link_to "<i class=\"glyphicon glyphicon-minus-sign\"></i>".html_safe, destroy_from_works_detail_table_work_path(work), :remote => true, :confirm => 'Are you sure you want to remove this transaction?', :class => "btn btn-danger", :method => :delete %>
+
       </td>
     </tr>
     <% end %>
 
     <% if !new_work.blank? %>
 
+
+    <%= hidden_field_tag 'work[appointment_id]', new_work.appointment_id %>
     <!-- New Work Row !-->
     <div id="table-new-work-row">
 
@@ -63,8 +66,7 @@
         </td>
 
         <td>
-          <!-- Action <i class=\"glyphicon glyphicon-plus\"></i>".html_safe !-->
-          <%= f.submit "Add", class: 'btn btn-success' %>
+          <%= button_tag "<i class=\"glyphicon glyphicon-plus\"></i>".html_safe, type: 'submit', class: 'btn btn-success' %>
         </td>
 
 

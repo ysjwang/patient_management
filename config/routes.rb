@@ -3,6 +3,7 @@ PatientManagement::Application.routes.draw do
   resources :works do
     member do
       post 'create_from_works_detail_table'
+      delete 'destroy_from_works_detail_table'
     end
   end
   resources :appointments

@@ -5,22 +5,25 @@ class WorksController < ApplicationController
 
   def create_from_works_detail_table
     puts 'hello params ' + params.to_yaml
-    @appointment = Appointment.find(params[:id])
+
+    # @appointment = Appointment.find(params[:id])
+
     @work = Work.new(work_params)
-    @work.appointment = @appointment
+    # @work.appointment = @appointment
+    @appointment = Appointment.find(@work.appointment_id)
     puts 'Work is ' + @work.to_yaml
     respond_to do |format|
       if @work.save
-        puts '-----------------SUCCESS---------------'
+        puts '-----------------SUCCESS CREATE FROM WORKS TABLE---------------'
         @works = @appointment.works.reload
         @new_work = Work.new(appointment_id: @appointment.id)
-        format.js { render :create_from_works_detail_table }
+        format.js { render :rerender_works_detail_table }
 
       else
-        puts '-------------------FAILURE--------------'
+        puts '-------------------FAILURE CREATE FROM WORKS TABLE--------------'
         @works = @appointment.works.reload
         @new_work = Work.new(appointment_id: @appointment.id)
-        format.js { render :create_from_works_detail_table }
+        format.js { render :rerender_works_detail_table }
       end
 
     end
@@ -29,6 +32,29 @@ class WorksController < ApplicationController
   end
 
   def index
+  end
+
+
+
+
+  def destroy_from_works_detail_table
+    @work = Work.find(params[:id])
+    @appointment = @work.appointment
+    respond_to do |format|
+      if @work.destroy
+        puts '------------SUCCESS DESTROY------------'
+        @works = @appointment.works.reload
+        @new_work = Work.new(appointment_id: @appointment.id)
+        format.js { render :rerender_works_detail_table }
+      else
+        puts '------------FAILURE DESTROY------------'
+        @works = @appointment.works.reload
+        @new_work = Work.new(appointment_id: @appointment.id)
+        format.js { render :rerender_works_detail_table }
+
+      end
+    end
+
   end
 
   def update

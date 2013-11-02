@@ -51,7 +51,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @patient = @appointment.patient
     # @new_work = Work.new(appointment_id: @appointment.id) - DOY. This DOES get passed on to the view, but we didn't save it in the view. Nice one.
-    @new_work = Work.new
+    @new_work = Work.new(appointment_id: @appointment.id)
 
   end
 
