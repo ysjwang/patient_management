@@ -51,5 +51,9 @@ class Work < ActiveRecord::Base
     return self.billable
   end
 
+  def billable_display
+    return self.billable? ? "<span class=\"glyphicon glyphicon-ok\"></span>".html_safe : "<span class=\"glyphicon glyphicon-remove\"></span>".html_safe
+  end
+
 
 end

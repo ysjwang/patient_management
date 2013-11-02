@@ -54,34 +54,15 @@
 
       <br />
       <%= best_in_place @appointment, :notes, type: :textarea, inner_class: 'form-control', cancel_button: 'Reset', cancel_button_class: 'btn btn-danger' %>
-
-
       <hr />
 
-      <table class="table">
-        <thead>
-          <th>Type</th>
-          <th>Quantity</th>
-          <th>Billable?</th>
-          <th>Notes</th>
-        </thead>
-        <tbody>
-          <% @appointment.works.each do |work| %>
-          <tr>
-            <td>
-
-              <%= best_in_place work, :worktype_id, type: :select, collection: Worktype.all.collect { |worktype| [worktype.id, worktype.name] } %>
-
-            </td>
-            <td><%= best_in_place work, :quantity, type: :input, inner_class: 'form-control input-sm', display_as: :work_quantity_string %></td>
-            <td><% if work.billable? %><span class="glyphicon glyphicon-ok"></span><% end %></td>
-            <td><%= best_in_place work, :notes, type: :input, inner_class: 'form-control input-sm', ok_button: 'Save',  ok_button_class: 'btn btn-xs btn-primary', cancel_button: 'Cancel', cancel_button_class: 'btn btn-xs btn-default' %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+      <div id="works-detail-table">
+        <%= render 'works/works_detail_table', works: @appointment.works, new_work: @new_work %>
+      </div>
+      
+      <br /><br />
       <button type="button" class="btn btn-primary">Generate Invoice</button>
+
     </div>
 
 
