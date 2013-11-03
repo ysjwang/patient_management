@@ -7,50 +7,14 @@
 
 
     <!-- Basic Patient Information !-->
-    <div class="well" id="patient-overview">
-
-      <div class="row">
-        <div class="col-md-2">
-          <center><img src="http://placehold.it/150x150" class="img-rounded img-responsive"></center>
-        </div>
-        <div class="col-md-10">
-          <h2><%= @patient.full_name %></h2>
-          <h3><%= @appointment.display_start_date %> at <%= @appointment.display_start_time %></h3>
-          <br />
-
-          <div class="row">
-            <div class="col-md-3">
-              <ul class="list-unstyled">
-                <li><strong>Age:</strong> <%= @patient.age %></li>
-                <li><strong>Gender:</strong> <%= @patient.gender %></li>
-                <li><strong>Blood Type:</strong> AB</li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <ul class="list-unstyled">
-                <li><strong>Age:</strong> <%= @patient.age %></li>
-                <li><strong>Gender:</strong> <%= @patient.gender %></li>
-                <li><strong>Blood Type:</strong> AB</li>
-              </ul>
-            </div>
-          </div>
-
-          <hr />
-          <div id="patient-medical-history">
-            <h4>Medical History</h4>
-            <p><%= simple_format(@patient.description) %></p>
-
-          </div>
-
-
-        </div>
-      </div>
-
-    </div>
+    <%= render 'patients/patient_overview_card', patient: @patient %>
+    
 
     <!-- Appointment-specific Information !-->
     <div class="well" id="appointment-detail">
       <h2>Appointment Details</h2>
+      <h3><%= @appointment.display_start_date %> at <%= @appointment.display_start_time %></h3>
+
 
       <br />
       <%= best_in_place @appointment, :notes, type: :textarea, inner_class: 'form-control', cancel_button: 'Reset', cancel_button_class: 'btn btn-danger' %>
