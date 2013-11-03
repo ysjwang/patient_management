@@ -11,7 +11,7 @@ A small patient management system I wanted to challenge myself to complete withi
 
 Technical items I wanted to challenge myself with were:
 
-* AJAX / jQuery
+* AJAX / jQuerys
 * Test Driven Development
 * Front end stuff (calendars, etc)
 * Responsive design
