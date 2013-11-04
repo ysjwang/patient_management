@@ -6,7 +6,7 @@ A small patient management system I wanted to challenge myself to complete withi
 * Patient appointment booking
 * Persistent Patient medical records
 * Printable paper record integration
-* Billing system
+* Billing system 
 
 
 Technical items I wanted to challenge myself with were: 
