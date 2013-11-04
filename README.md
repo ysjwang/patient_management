@@ -9,7 +9,7 @@ A small patient management system I wanted to challenge myself to complete withi
 * Billing system
 
 
-Technical items I wanted to challenge myself with were:
+Technical items I wanted to challenge myself with were: 
 
 * AJAX / jQuery
 * Test Driven Development
