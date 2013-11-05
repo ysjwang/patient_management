@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% works.each do |work| %>
-    <tr>
+    <tr class="work-rows" data-toggle="tooltip" data-placement="top" title="Click on any of the text to edit details.">
       <td>
         <!-- Work Type !-->
         <%= best_in_place work, :worktype_id, type: :select, collection: Worktype.all.collect { |worktype| [worktype.id, worktype.name] } %>
@@ -78,3 +78,10 @@
   </tbody>
 </table>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.work-rows').tooltip()
+});
+
+</script>

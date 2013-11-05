@@ -17,7 +17,9 @@
 
 
       <br />
-      <%= best_in_place @appointment, :notes, type: :textarea, inner_class: 'form-control', cancel_button: 'Reset', cancel_button_class: 'btn btn-danger' %>
+      <div id="appointment-notes" data-toggle="tooltip" data-placement="left" title="Click the text to edit.">
+        <%= best_in_place @appointment, :notes, type: :textarea, inner_class: 'form-control', cancel_button: 'Reset', cancel_button_class: 'btn btn-danger' %>
+      </div>
       <hr />
 
       <div id="works-detail-table">
@@ -34,3 +36,10 @@
 
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#appointment-notes').tooltip()
+});
+
+</script>
