@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+
+      <div class="form-horizontal">
+        <h2>Sign In</h2>
+
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <div class="col-md-5">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, :class => "form-control", :placeholder => "Doogie.Howser@email.com" %>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-md-5">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, :class => "form-control" %>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+
+        <div>
+          <%= f.submit "Sign In", :class => "btn btn-success"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

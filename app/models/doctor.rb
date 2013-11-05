@@ -28,10 +28,12 @@ class Doctor < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
 
   has_many :appointments
   has_many :patients, through: :appointments
+
+  after_create :give_appointments
 
   def full_name
     return self.first_name + ' ' + self.last_name
@@ -45,5 +47,24 @@ class Doctor < ActiveRecord::Base
     return 'Dr. ' + self.last_name
   end
 
-  
+  def give_appointments
+    # Temporary: give a new doctor sign up some patients and appointments
+
+    appointment_count = 10
+    appointment_count.times do 
+      # For each of these appointments
+
+      # Randomize if past, present, or future (bias it towards past or ongoing)
+      appointment_type = [:valid_past_appointment, :valid_past_appointment, :valid_past_appointment, :valid_ongoing_appointment, :valid_ongoing_appointment, :valid_future_appointment].sample
+      appointment = FactoryGirl.create(appointment_type, patient: Patient.all.sample, doctor: self)
+      rand(1..3).times do
+        appointment.works << FactoryGirl.create(:work, appointment: appointment, worktype: Worktype.all.sample)
+      end
+
+    end
+
+
+  end
+
+
 end

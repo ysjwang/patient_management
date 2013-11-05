@@ -12,5 +12,8 @@ FactoryGirl.define do
     
     # hello_user = create(:patient)
 
+    # Skip sign-up fillings..
+    after(:build) { |doctor| doctor.class.skip_callback(:create, :after, :give_appointments) }
+
   end
 end
