@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  before_filter :authenticate_doctor!, only: [:update, :show]
 
   def new
   end

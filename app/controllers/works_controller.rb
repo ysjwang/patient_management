@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_filter :authenticate_doctor!, only: [:create_from_works_detail_table, :destroy_from_works_detail_table, :update, :show]
 
   def new
   end
