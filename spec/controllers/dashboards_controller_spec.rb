@@ -4,6 +4,8 @@ describe DashboardsController do
 
   describe "GET 'doctor'" do
     it "returns http success" do
+      doctor = create(:doctor)
+      sign_in :doctor, doctor
       get 'doctor'
       response.should be_success
     end

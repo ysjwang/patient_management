@@ -41,9 +41,9 @@ describe Doctor do
       expect(doctor).to have_at_least(1).errors_on(:last_name)
     end
 
-    it 'is not valid without a description' do
+    it 'is valid without a description' do
       doctor = build(:doctor, description: nil)
-      expect(doctor).to have_at_least(1).errors_on(:description)
+      expect(doctor).to be_valid
     end
     
   end

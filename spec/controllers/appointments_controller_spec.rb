@@ -18,7 +18,11 @@ describe AppointmentsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      doctor = create(:doctor)
+      sign_in :doctor, doctor
+
+      appointment = create(:valid_ongoing_appointment)
+      get 'show', id: appointment.id
       response.should be_success
     end
   end
