@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ysjwang/patient_management.png?branch=master)](https://travis-ci.org/ysjwang/patient_management)
+
 # Simple Patient Management
 
 A small patient management system I wanted to challenge myself to complete within a short amount of time. Some features include:
