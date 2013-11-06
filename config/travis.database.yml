@@ -1,0 +1,8 @@
+# For use with travis-ci.
+# The before_script in .travis.yml will copy this to overwrite the existing database.yml
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: patient_management_test
+  pool: 5
+  username: postgres
